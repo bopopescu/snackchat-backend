@@ -29,8 +29,10 @@ router.post('/user', function(req, res) {
     sentPhotos: [],
     receivedPhotos: []
   })
-  newUser.save()
-  res.send({text: "this is post user"})
+  newUser.save(function(err){
+    if(err){console.log(err)}
+  })
+  res.send({text: "new user saved"})
 })
 
 
