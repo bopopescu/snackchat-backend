@@ -10,17 +10,14 @@ var Photo = models.Photo;
 
 // YOUR API ROUTES HERE
 router.get('/user', function(req, res) {
-  // console.log("finding/creating user");
-  // User.findOne({username: "rcsmooth"}, function(err, user){
-  //   if(err) {console.log(err)}
-  //   else{
-  //     if(user.password === req.body.password){
-  //       res.send({text: "you have just logged in"});
-  //     }
-  //     res.send({text: "helllooooo"})
-  //   }
-  // }) //search for username
-  res.send({text: "this is get user"})
+  console.log("finding/creating user");
+  User.findOne({username: "rcsmooth"}, function(err, user){
+    if(err) {console.log(err)}
+    else{
+      res.send({text: "helllooooo"})
+    }
+  }) //search for username
+  // res.send({text: "this is get user"})
 })
 
 
