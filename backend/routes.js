@@ -14,7 +14,7 @@ router.get('/user', function(req, res) {
   User.findOne({username: "rcsmooth"}, function(err, user){
     if(err) {console.log(err)}
     else{
-      res.send({text: "helllooooo"})
+      res.send(user)
     }
   }) //search for username
   // res.send({text: "this is get user"})
@@ -22,13 +22,14 @@ router.get('/user', function(req, res) {
 
 
 router.post('/user', function(req, res) {
-  // var newUser = new User({
-  //   username: req.body.username,
-  //   password: req.body.password,
-  //   friendList: [],
-  //   sentPhotos: [],
-  //   receivedPhotos: []
-  // })
+  var newUser = new User({
+    username: req.body.username,
+    password: req.body.password,
+    friendList: [],
+    sentPhotos: [],
+    receivedPhotos: []
+  })
+  newUser.save()
   res.send({text: "this is post user"})
 })
 
