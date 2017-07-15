@@ -183,7 +183,7 @@ router.post('/vision', function(req, res) {
     //
     //   }
     // })
-
+    console.log("this is nowUser: ", nowUser);
     nowUser.sentPhotos.push(newPhoto);
     nowUser.save(function(err){
       if(err){console.log(err)}
