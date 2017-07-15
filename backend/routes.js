@@ -60,15 +60,26 @@ router.post('/photo', function(req, res){
 })
 
 router.post('/addfriend', function(req, res){
-  User.findOne({username: "rcsmooth"})
-  .then((user1) => User.findOne({username: req.body.username})) //current user
-  .then((user2) => function(user1, user2){                  //add user
-      user1.friendsList.push(user2.username);
-      user1.save(function(err){
-        if(err){console.log(err)}
-        else{res.send({text: 'friend saved in user!'})}
-    })
-  })
+  // User.findOne({username: "rcsmooth"})
+  // .then(user1, function(err) {
+  //   User.findOne({username: req.body.username})
+  //   .then(user2, function(err) {
+  //
+  //   })
+  // })
+  //
+  // {
+  //   )
+  // }
+  // .then(user1, function(user2){
+  //   user1.friendsList.push(user2.username);
+  //
+  //   user1.save(function(err){
+  //     if(err){console.log(err)}
+  //     else{res.send({text: 'friend saved in user!'})}
+  //   })
+  // })
+  res.send({text: "this feature is not implemented yet lolz"})
 })
 
 
