@@ -173,7 +173,7 @@ router.post('/vision', function(req, res) {
           else{
             console.log("api labels saved");
             // res.status(200).send(JSON.stringify({"success": true, "link": link, "user": labels}));
-            res.JSON({"success": true, "link": link, "user": user});
+            res.send({"success": true, "link": link, "user": user});
           }
         })
       }
