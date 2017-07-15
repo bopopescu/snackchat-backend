@@ -35,6 +35,7 @@ router.post('/login', function(req, res) {
   User.findOne({username: req.body.username}, function(err, user){
     if(err) {console.log(err)}
     else{
+      console.log("User in backend", user);
       res.send({success: true, user: user})
     }
   }) //search for username
@@ -157,6 +158,7 @@ router.post('/vision', function(req, res) {
     User.findOne({username: username}, function(err, user){
       if(err){console.log(err)}
       else{
+        console.log(user);
         user.sentPhotos.push(newPhoto);
         user.save(function(err){
           if(err){console.log(err)}
