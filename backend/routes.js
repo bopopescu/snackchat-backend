@@ -159,12 +159,12 @@ router.post('/vision', function(req, res) {
       imgFile: link
     });
 
-    console.log("this is username2: ", username);
+    // console.log("this is username2: ", username);
 
     User.findOne({username: username}, function(err, user){
       if(err){console.log(err)}
       else{
-        console.log("this is user.findone result:", user);
+        // console.log("this is user.findone result:", user);
         console.log("this is nowUser GV: ", nowUser);
 
         nowUser.sentPhotos.push(newPhoto);
@@ -172,7 +172,7 @@ router.post('/vision', function(req, res) {
           if(err){console.log(err)}
           else{
             console.log("api labels saved");
-            res.status(200).send(JSON.stringify({"success": true, "link": link, "results": results}));
+            res.status(200).send(JSON.stringify({"success": true, "link": link, "user": labels}));
           }
         })
       }
