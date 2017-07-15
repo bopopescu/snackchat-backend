@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 // YOUR API ROUTES HERE
 router.get('/user', function(req, res) {
-  User.findOne({username: "rcsmooth"}, function(err, user){
+  User.findOne({username: "Ryan"}, function(err, user){
     if(err) {console.log(err)}
     else{
       res.send(user)
@@ -46,14 +46,14 @@ router.post('/photo', function(req, res){
     imgFile: req.body.link
   })
 
-  User.findOne({username: "rcsmooth"}, function(err, user){
+  User.findOne({username: "Ryan"}, function(err, user){
     if(err){console.log(err)}
     else{
       user.receivedPhotos.push(newPhoto);
       user.save(function(err){
         if(err){console.log(err)}
         else{console.log("photo saved")}
-        res.send({text: "picture saved into received photos"})
+        res.send({text: "picture saved into Ryan's received photos"})
       })
     }
   })
