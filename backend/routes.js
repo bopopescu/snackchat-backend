@@ -32,6 +32,8 @@ router.get('/user', function(req, res) {
   // res.send({text: "this is get user"})
 })
 
+
+
 router.post('/login', function(req, res) {
   User.findOne({username: req.body.username}, function(err, user){
     if(err) {console.log(err)}
@@ -172,21 +174,23 @@ router.post('/vision', function(req, res) {
 
     // console.log("this is username2: ", username);
 
-    User.findOne({username: username}, function(err, user){
+    // User.findOne({username: username}, function(err, user){
+    //   if(err){console.log(err)}
+    //   else{
+    //     // console.log("this is user.findone result:", user);
+    //     console.log("this is nowUser GV: ", nowUser);
+    //
+    //
+    //   }
+    // })
+
+    nowUser.sentPhotos.push(newPhoto);
+    nowUser.save(function(err){
       if(err){console.log(err)}
       else{
-        // console.log("this is user.findone result:", user);
-        console.log("this is nowUser GV: ", nowUser);
-
-        nowUser.sentPhotos.push(newPhoto);
-        nowUser.save(function(err){
-          if(err){console.log(err)}
-          else{
-            console.log("api labels saved");
-            // res.status(200).send(JSON.stringify({"success": true, "link": link, "user": labels}));
-            res.send({"success": true, "link": link, "label": labels});
-          }
-        })
+        console.log("api labels saved");
+        // res.status(200).send(JSON.stringify({"success": true, "link": link, "user": labels}));
+        res.send({"success": true, "link": link, "label": labels});
       }
     })
     // currentUser.save(function(err){
