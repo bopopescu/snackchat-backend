@@ -40,7 +40,7 @@ router.get('/user', function(req, res) {
 router.get('/user/inbox', function(req, res) {
   console.log("entering user/inbox");
   User.findOne({username: req.body.username}, function(err, user){
-    if(err) {res.send({err})
+    if(err) {res.send({err})}
     else{
       console.log("this is user.receivedPhotos", user.receivedPhotos);
       res.send({success: true, userInbox: user.receivedPhotos})
