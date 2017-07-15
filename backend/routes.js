@@ -13,6 +13,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 // Imports the Google Cloud client library
 const Vision = require('@google-cloud/vision');
 
+let nowUser = {};
 
 
 
@@ -36,7 +37,9 @@ router.post('/login', function(req, res) {
     if(err) {console.log(err)}
     else{
       console.log("User in backend", user);
-      res.send({success: true, user: user})
+      nowUser = user;
+      console.log("this is nowUser", nowUser);
+      res.send({success: true, user: user});
     }
   }) //search for username
   // res.send({text: "this is get user"})
