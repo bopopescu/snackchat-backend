@@ -106,6 +106,16 @@ router.post('/addfriend', function(req, res){
   res.send({text: "this feature is not implemented yet lolz"})
 })
 
+router.post('/send', function(req, res){
+  User.findOne({username: req.body.username}, functionn(err, user){
+    if(err){console.log(err)}
+    else{
+      user.receivedPhotos.push(req.body.photo);
+      console.log("this photo was just pushed to receivedPhoto array: ", photo);
+    }
+  })
+})
+
 
 
 router.post('/vision', function(req, res) {
