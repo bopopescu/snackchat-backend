@@ -135,7 +135,7 @@ router.post('/vision', function(req, res) {
     res.status(200).send(JSON.stringify({"success": true, "link": link, "results": results}));
   })
   .catch((err) => {
-    res.JSON("this is visionClient Error: ", err);
+    res.send({visionClientError: err});
     console.error('ERROR:', err);
   });
 })
