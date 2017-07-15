@@ -32,6 +32,14 @@ router.get('/user', function(req, res) {
   // res.send({text: "this is get user"})
 })
 
+router.get('/user/inbox', function(req, res) {
+  User.findOne({username: req.body.username}, function(err, user){
+    if(err) {console.log(err)}
+    else{
+      res.send({success: true, userInbox: user.receivedPhotos})
+    }
+  }) //search for username
+})
 
 
 router.post('/login', function(req, res) {
@@ -147,10 +155,9 @@ router.post('/vision', function(req, res) {
   console.log("This is Vision Client: ", visionClient);
 
   var link = req.body.link;
-  // var username = req.body.username;
+  console.log(req.body.username);
   console.log("This is requested link: ", link);
   // console.log("this is username: ", username);
-
   // const fileName = '../resources/mouse.jpg';
 
   // Performs label detection on the image file
