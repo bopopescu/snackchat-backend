@@ -54,17 +54,11 @@ router.post('/photo', function(req, res){
       user.save(function(err){
         if(err){console.log(err)}
         else{console.log("photo saved")}
+        res.send({text: "picture saved into received photos"})
       })
     }
   })
-
-
-  res.send({text: "this is post photo"})
 })
 
-// SAMPLE ROUTE
-router.use('/users', (req, res) => {
-    res.json({ success: true });
-});
 
 module.exports = router;
