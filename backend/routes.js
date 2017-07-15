@@ -15,6 +15,11 @@ const Vision = require('@google-cloud/vision');
 
 let nowUser = {};
 
+var isActuallyFood = function (keywords, labels) {
+    return labels.some(function (v) {
+        return keywords.indexOf(v) >= 0;
+    });
+};
 
 
 
@@ -72,6 +77,7 @@ router.post('/user', function(req, res) {
 
 
 router.post('/photo', function(req, res){
+
   var newPhoto = new Photo({
     from: req.body.from,
     to: req.body.to,
@@ -165,6 +171,8 @@ router.post('/vision', function(req, res) {
   .then((results) => {
     console.log("Inside visionClient results");
     const labels = results[0];
+    const validFoodArr = ["Food", "Drink", "Snack", 'Vegetable', "Produce", "Pizza", "Drink", "Cuisine", "Grapes"]
+    const isFood = isActuallyFood(validFoodArr, results[0])
     console.log("Results: ", results[1]);
 
 
@@ -176,7 +184,8 @@ router.post('/vision', function(req, res) {
       to: '',
       timestamp: Date.now(),
       labels: labels,
-      imgFile: link
+      imgFile: link,
+      isFood: isFood
     });
 
     // console.log("this is username2: ", username);

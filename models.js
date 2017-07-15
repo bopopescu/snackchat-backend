@@ -32,7 +32,8 @@ var photoSchema = new Schema({
     to: String,
     timestamp: Date,
     labels: Object,
-    imgFile: String
+    imgFile: String,
+    isFood: Boolean
 });
 
 userSchema.plugin(findOrCreate);
