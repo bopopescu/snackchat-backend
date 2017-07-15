@@ -154,15 +154,27 @@ router.post('/vision', function(req, res) {
       imgFile: link
     })
 
-    currentUser.sentPhotos.push(newPhoto);
-    currentUser.save(function(err){
-      if(err){console.log("saving error: ", err)}
-      else {
-        console.log("api labels saved");
-        res.status(200).send(JSON.stringify({"success": true, "link": link, "results": results}));
-
+    User.findOne({username: username}, function(err, user){
+      if(err){console.log(err)}
+      else{
+        user.sentPhotos.push(newPhoto);
+        currentUser.save(function(err){
+          if(err){console.log(err)}
+          else{
+            console.log("api labels saved");
+            res.status(200).send(JSON.stringify({"success": true, "link": link, "results": results}));
+          }
+        })
       }
     })
+    // currentUser.save(function(err){
+    //   if(err){console.log("saving error: ", err)}
+    //   else {
+    //     console.log("api labels saved");
+    //     res.status(200).send(JSON.stringify({"success": true, "link": link, "results": results}));
+    //
+    //   }
+    // })
     // labels.forEach((label) => console.log(label));
   })
   .catch((err) => {
