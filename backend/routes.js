@@ -12,7 +12,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 // YOUR API ROUTES HERE
 router.get('/user', function(req, res) {
-  User.findOne({username: "Ryan"}, function(err, user){
+  User.findOne({username: req.body.username}, function(err, user){
     if(err) {console.log(err)}
     else{
       res.send({succes: true, user: user})
