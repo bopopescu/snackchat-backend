@@ -164,7 +164,8 @@ router.post('/vision', function(req, res) {
     User.findOne({username: username}, function(err, user){
       if(err){console.log(err)}
       else{
-        console.log(user);
+        console.log("this is user.findone result:", user);
+        console.log("this is nowUser GV: ", nowUser);
         user.sentPhotos.push(newPhoto);
         user.save(function(err){
           if(err){console.log(err)}
