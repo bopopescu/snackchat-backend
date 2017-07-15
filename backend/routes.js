@@ -130,6 +130,7 @@ router.post('/vision', function(req, res) {
   console.log("This is Vision Client: ", visionClient);
 
   var link = req.body.link;
+  var user = req.body.user;
   console.log("This is requested link: ", link);
 
   // const fileName = '../resources/mouse.jpg';
@@ -140,7 +141,9 @@ router.post('/vision', function(req, res) {
     console.log("Inside visionClient results");
     const labels = results[0];
     console.log("Results: ", results[1]);
-    console.log('Labels:');
+
+
+    console.log('Labels:', labels);
     //use criteria for photo here ODO: //asdfasdfasdf
 
     // labels.forEach((label) => console.log(label));
