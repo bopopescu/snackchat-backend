@@ -23,7 +23,8 @@ var userSchema = new Schema({
     username: String,
     password: String,
     friendList: Array,
-    receivedPhotos: []
+    receivedPhotos: [],
+    sentPhotos: []
 });
 
 var photoSchema = new Schema({
