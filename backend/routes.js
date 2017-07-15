@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //
 var models = require('../models.js');
 var User = models.User;
 var Photo = models.Photo;
 
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
 
 // YOUR API ROUTES HERE
 router.get('/user', function(req, res) {
