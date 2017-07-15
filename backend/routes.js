@@ -13,13 +13,9 @@ router.use(bodyParser.urlencoded({ extended: false }));
 // Imports the Google Cloud client library
 const Vision = require('@google-cloud/vision');
 
-// Your Google Cloud Platform project ID
-const projectId = 'snackchat-d4ab1';
 
-// Instantiates a client
-const visionClient = Vision({
-  projectId: projectId
-});
+
+
 
 // The name of the image file to annotate
 // const fileName = '../resources/mouse.jpg';
@@ -110,25 +106,36 @@ router.post('/addfriend', function(req, res){
 
 router.post('/vision', function(req, res) {
   console.log("Hit /vision route");
-  console.log("Vision Client" ,visionClient);
+
+  // Your Google Cloud Platform project ID
+  const projectId = 'snackchat-d4ab1';
+
+  // Instantiates a client
+  const visionClient = Vision({
+    projectId: projectId
+  });
+
+  console.log("This is Vision Client: ", visionClient);
 
   var link = req.body.link;
-  console.log(link);
+  console.log("This is requested link: ", link);
 
   // const fileName = '../resources/mouse.jpg';
 
   // Performs label detection on the image file
   visionClient.detectLabels(link)
   .then((results) => {
+    console.log("Inside visionClient results");
     const labels = results[0];
     console.log("Results: ", results[1]);
     console.log('Labels:');
-    //use criteria for photo here TODO: //asdfasdfasdf
-    labels.forEach((label) => console.log(label));
+    //use criteria for photo here ODO: //asdfasdfasdf
+
+    // labels.forEach((label) => console.log(label));
     res.status(200).send(JSON.stringify({"success": true, "link": link, "results": results}));
   })
   .catch((err) => {
-    res.JSON(err);
+    res.JSON("this is visionClient Error: ", err);
     console.error('ERROR:', err);
   });
 })
