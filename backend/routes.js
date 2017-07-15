@@ -39,13 +39,26 @@ router.post('/user', function(req, res) {
 
 
 router.post('/photo', function(req, res){
-  // var newPhoto = new Photo({
-  //   from: req.body.username,
-  //   // to: ,
-  //   timestamp: Date,
-  //   labels: Object,
-  //   imgFile: String
-  // })
+  var newPhoto = new Photo({
+    from: req.body.from,
+    to: req.body.to,
+    timestamp: Date.now(),
+    labels: req.body.labels,
+    imgFile: req.body.link
+  })
+
+  User.findOne({username: "rcsmooth"}, function(err, user){
+    if(err){console.log(err)}
+    else{
+      user.receivedPhotos.push(newPhoto);
+      user.save(function(err){
+        if(err){console.log(err)}
+        else{console.log("photo saved")}
+      })
+    }
+  })
+
+
   res.send({text: "this is post photo"})
 })
 
