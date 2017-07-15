@@ -61,8 +61,8 @@ router.post('/photo', function(req, res){
 
 router.post('/addfriend', function(req, res){
   User.findOne({username: "rcsmooth"})
-  .then(user1, User.findOne({username: req.body.username})) //current user
-  .then(user2, function(user1, user2){                  //add user
+  .then((user1) => User.findOne({username: req.body.username})) //current user
+  .then((user2) => function(user1, user2){                  //add user
       user1.friendsList.push(user2.username);
       user1.save(function(err){
         if(err){console.log(err)}
