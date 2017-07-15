@@ -15,7 +15,7 @@ router.get('/user', function(req, res) {
   User.findOne({username: "Ryan"}, function(err, user){
     if(err) {console.log(err)}
     else{
-      res.send(user)
+      res.send({succes: true, user: user})
     }
   }) //search for username
   // res.send({text: "this is get user"})
