@@ -130,7 +130,7 @@ router.post('/vision', function(req, res) {
   console.log("This is Vision Client: ", visionClient);
 
   var link = req.body.link;
-  var currentUser = req.body.user;
+  var username = req.body.username;
   console.log("This is requested link: ", link);
 
   // const fileName = '../resources/mouse.jpg';
@@ -147,7 +147,7 @@ router.post('/vision', function(req, res) {
     //use criteria for photo here ODO: //asdfasdfasdf
 
     var newPhoto = new Photo({
-      from: currentUser.username,
+      from: username,
       to: '',
       timestamp: Date.now(),
       labels: labels,
@@ -158,7 +158,7 @@ router.post('/vision', function(req, res) {
       if(err){console.log(err)}
       else{
         user.sentPhotos.push(newPhoto);
-        currentUser.save(function(err){
+        user.save(function(err){
           if(err){console.log(err)}
           else{
             console.log("api labels saved");
