@@ -101,28 +101,28 @@ router.post('/photo', function(req, res){
   })
 })
 
-router.post('/addfriend', function(req, res){
-  // User.findOne({username: "rcsmooth"})
-  // .then(user1, function(err) {
-  //   User.findOne({username: req.body.username})
-  //   .then(user2, function(err) {
-  //
-  //   })
-  // })
-  //
-  // {
-  //   )
-  // }
-  // .then(user1, function(user2){
-  //   user1.friendsList.push(user2.username);
-  //
-  //   user1.save(function(err){
-  //     if(err){console.log(err)}
-  //     else{res.send({text: 'friend saved in user!'})}
-  //   })
-  // })
-  res.send({text: "this feature is not implemented yet lolz"})
-})
+// router.post('/addfriend', function(req, res){
+//   // User.findOne({username: "rcsmooth"})
+//   // .then(user1, function(err) {
+//   //   User.findOne({username: req.body.username})
+//   //   .then(user2, function(err) {
+//   //
+//   //   })
+//   // })
+//   //
+//   // {
+//   //   )
+//   // }
+//   // .then(user1, function(user2){
+//   //   user1.friendsList.push(user2.username);
+//   //
+//   //   user1.save(function(err){
+//   //     if(err){console.log(err)}
+//   //     else{res.send({text: 'friend saved in user!'})}
+//   //   })
+//   // })
+//   res.send({text: "this feature is not implemented yet lolz"})
+// })
 
 router.post('/send', function(req, res){
   console.log("entering /send route, this is req: ", req);
@@ -130,7 +130,7 @@ router.post('/send', function(req, res){
     if(err){console.log(err)}
     else{
       user.receivedPhotos.push(req.body.photo);
-      console.log("this photo was just pushed to receivedPhoto array: ", photo);
+      console.log("this photo was just pushed to receivedPhoto array: ", req.body.photo);
     }
   })
 })
@@ -208,7 +208,7 @@ router.post('/vision', function(req, res) {
       else{
         console.log("api labels saved");
         // res.status(200).send(JSON.stringify({"success": true, "link": link, "user": labels}));
-        res.send({"success": true, "link": link, "label": labels});
+        res.json({"success": true, "link": link, "label": labels});
       }
     })
     // currentUser.save(function(err){
