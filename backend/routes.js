@@ -165,7 +165,7 @@ router.post('/vision', function(req, res) {
     //use criteria for photo here ODO: //asdfasdfasdf
 
     var newPhoto = new Photo({
-      from: nowUser,
+      from: nowUser.username,
       to: '',
       timestamp: Date.now(),
       labels: labels,
