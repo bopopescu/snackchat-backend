@@ -173,7 +173,7 @@ router.post('/vision', function(req, res) {
     const labels = results[0];
     const validFoodArr = ["Food", "Drink", "Snack", 'Vegetable', "Produce", "Pizza", "Drink", "Cuisine", "Grapes"]
     const isFood = isActuallyFood(validFoodArr, results[0])
-    console.log("Results: ", results[1]);
+    // console.log("Results: ", results[1]);
 
 
     console.log('Labels:', labels);
@@ -199,7 +199,7 @@ router.post('/vision', function(req, res) {
     //
     //   }
     // })
-    console.log("this is nowUser: ", nowUser);
+    // console.log("this is nowUser: ", nowUser);
     nowUser.sentPhotos.push(newPhoto);
     nowUser.save(function(err){
       if(err){console.log(err)}
