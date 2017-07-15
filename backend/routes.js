@@ -12,7 +12,6 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 // YOUR API ROUTES HERE
 router.get('/user', function(req, res) {
-  console.log("finding/creating user");
   User.findOne({username: "rcsmooth"}, function(err, user){
     if(err) {console.log(err)}
     else{
@@ -57,6 +56,18 @@ router.post('/photo', function(req, res){
         res.send({text: "picture saved into received photos"})
       })
     }
+  })
+})
+
+router.post('/addfriend', function(req, res){
+  User.findOne({username: "rcsmooth"})
+  .then(user1, User.findOne({username: req.body.username})) //current user
+  .then(user2, function(user1, user2){                  //add user
+      user1.friendsList.push(user2.username);
+      user1.save(function(err){
+        if(err){console.log(err)}
+        else{res.send({text: 'friend saved in user!'})}
+    })
   })
 })
 
