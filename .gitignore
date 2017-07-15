@@ -1,2 +1,4 @@
 node_modules/
 npm-debug.log
+google_auth.json
+env.sh
