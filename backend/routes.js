@@ -25,7 +25,7 @@ router.post('/login', function(req, res) {
   User.findOne({username: req.body.username}, function(err, user){
     if(err) {console.log(err)}
     else{
-      res.send({succes: true, user: user})
+      res.send({success: true, user: user})
     }
   }) //search for username
   // res.send({text: "this is get user"})
