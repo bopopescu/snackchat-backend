@@ -108,7 +108,7 @@ router.post('/addfriend', function(req, res){
 
 router.post('/send', function(req, res){
   console.log("entering /send route, this is req: ", req);
-  User.findOne({username: req.body.username}, functionn(err, user){
+  User.findOne({username: req.body.username}, function(err){
     if(err){console.log(err)}
     else{
       user.receivedPhotos.push(req.body.photo);
