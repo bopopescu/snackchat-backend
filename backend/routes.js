@@ -133,6 +133,7 @@ router.post('/vision', function(req, res) {
   var link = req.body.link;
   var username = req.body.username;
   console.log("This is requested link: ", link);
+  console.log("this is username: ", username);
 
   // const fileName = '../resources/mouse.jpg';
 
@@ -153,7 +154,9 @@ router.post('/vision', function(req, res) {
       timestamp: Date.now(),
       labels: labels,
       imgFile: link
-    })
+    });
+
+    console.log("this is username2: ", username);
 
     User.findOne({username: username}, function(err, user){
       if(err){console.log(err)}
