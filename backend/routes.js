@@ -33,7 +33,7 @@ router.post('/user', function(req, res) {
   newUser.save(function(err){
     if(err){console.log(err)}
   })
-  res.send({text: "new user saved"})
+  res.send({success: true})
 })
 
 
